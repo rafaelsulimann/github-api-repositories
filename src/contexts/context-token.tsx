@@ -1,19 +1,21 @@
 import { AccessPayloadTokenDTO } from "@/models/auth";
 import { ReactNode, createContext, useEffect, useState } from "react";
-import * as authService from "../services/auth-service"
+import * as authService from "../services/auth-service";
 
 export type TokenContextType = {
   tokenContext: AccessPayloadTokenDTO | undefined;
-  setTokenContext: React.Dispatch<React.SetStateAction<AccessPayloadTokenDTO | undefined>>
+  setTokenContext: React.Dispatch<
+    React.SetStateAction<AccessPayloadTokenDTO | undefined>
+  >;
 };
 
 export const TokenContext = createContext({} as TokenContextType);
 
 type Props = {
   children: ReactNode;
-}
+};
 
-export function TokenProvider({children} : Props){
+export function TokenProvider({ children }: Props) {
   const [tokenContext, setTokenContext] = useState<AccessPayloadTokenDTO>();
   useEffect(() => {
     if (authService.isAuthenticated()) {

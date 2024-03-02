@@ -4,8 +4,7 @@ import App from "./App.tsx";
 import "./index.css";
 import ErrorPage from "./components/ErrorPage/ErrorPage.tsx";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Client from "./pages/Client/index.tsx";
-import HomeClient from "./pages/Client/HomeClient/index.tsx";
+import HomeClient from "./pages/HomeClient/index.tsx";
 
 const router = createBrowserRouter([
   {
@@ -14,14 +13,8 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/",
-        element: <Client />,
-        children: [
-          {
-            index: true,
-            element: <HomeClient />,
-          },
-        ],
+        index: true,
+        element: <HomeClient />,
       },
     ],
   },
